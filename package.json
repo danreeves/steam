@@ -1,8 +1,8 @@
 {
-  "name": "todomvc-flux",
-  "version": "0.0.3",
-  "description": "Example Flux architecture.",
-  "repository": "https://github.com/facebook/flux",
+  "name": "steam-react",
+  "version": "0.0.0",
+  "description": "Steam API interface built with React & Flux",
+  "repository": "https://github.com/danreeves/steam-react",
   "main": "js/app.js",
   "dependencies": {
     "flux": "^2.0.1",
@@ -23,7 +23,7 @@
     "build": "NODE_ENV=production browserify . | uglifyjs -cm > js/bundle.min.js",
     "test": "jest"
   },
-  "author": "Bill Fisher",
+  "author": "Dan Reeves",
   "browserify": {
     "transform": [
       "reactify",
