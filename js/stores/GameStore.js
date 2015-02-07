@@ -2,31 +2,37 @@
 
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
+var Constants = require('../constants/GameConstants');
 var assign = require('object-assign');
 
-var GAMES = require('../constants/GameList');
-
 var _games = [];
+
+function saveData (data) {
+    _games = data;
+}
 
 var GameStore = assign({}, EventEmitter.prototype, {
 
     getState: function () {
-        if (!_games.length) {
-            return GAMES;
-        }
         return _games;
+    },
+
+    emitChange: function() {
+        this.emit(Constants.CHANGE_EVENT);
     },
 
 });
 
-
-// Register callback to handle all updates
-AppDispatcher.register(function(action) {
-  switch(action.actionType) {
-    default:
-      // no op
-  }
+AppDispatcher.register(function (action) {
+    switch(action.actionType) {
+        case Constants.GET_GAME_DATA:
+            saveData(action.response);
+            break;
+        default:
+            // no op
+    }
+    GameStore.emitChange();
+    return true;
 });
-
 
 module.exports = GameStore;
