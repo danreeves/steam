@@ -9,8 +9,8 @@ var GameList = React.createClass({
             <div>
                 <h2>GameList</h2>
                 <ul>
-                    { GAMES_LIST.map(function (v, i) {
-                        return <li>{ v }</li>
+                    { GAMES_LIST.map(function (game) {
+                        return <li key={ game.appid }>{ game.name }</li>
                     }) }
                 </ul>
             </div>
