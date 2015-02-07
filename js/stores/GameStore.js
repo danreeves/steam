@@ -4,13 +4,13 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var GAMES = require('../contstants/GameList');
+var GAMES = require('../constants/GameList');
 
 var _games = [];
 
 var GameStore = assign({}, EventEmitter.prototype, {
 
-    getAll: function () {
+    getState: function () {
         if (!_games.length) {
             return GAMES;
         }
