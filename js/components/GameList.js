@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 var React = require('react');
 var GameStore = require('../stores/GameStore');
+var GameActions = require('../actions/GameActions');
 
 var GameList = React.createClass({
     displayName: 'GameList',
@@ -11,6 +12,7 @@ var GameList = React.createClass({
     },
     componentDidMount: function() {
         GameStore.addChangeListener(this.onGameListChange);
+        this.getDataIfNeeded();
     },
     updateState: function (key, data) {
         var state = this.state;
@@ -19,6 +21,9 @@ var GameList = React.createClass({
     },
     onGameListChange: function () {
         this.updateState('games', GameStore.getState());
+    },
+    getDataIfNeeded: function(props) {
+        GameActions.getData();
     },
     render: function () {
         return (
