@@ -1,14 +1,31 @@
 /** @jsx React.DOM */
 var React = require('react');
+var GameStore = require('../stores/GameStore');
 
 var GameList = React.createClass({
     displayName: 'GameList',
+    getInitialState: function () {
+        return {
+            games: GameStore.getState(),
+        }
+    },
+    componentDidMount: function() {
+        GameStore.addChangeListener(this.onGameListChange);
+    },
+    updateState: function (key, data) {
+        var state = this.state;
+        state[key] = data;
+        this.setState(state);
+    },
+    onGameListChange: function () {
+        this.updateState('games', GameStore.getState());
+    },
     render: function () {
         return (
             <div>
                 <h2>GameList</h2>
                 <ul>
-                    { this.props.games.map(function (game) {
+                    { this.state.games.map(function (game) {
                         return <li key={ game.appid }>{ game.name }</li>
                     }) }
                 </ul>

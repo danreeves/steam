@@ -17,6 +17,10 @@ var GameStore = assign({}, EventEmitter.prototype, {
         return _games;
     },
 
+
+    addChangeListener: function(callback) {
+        this.on(Constants.CHANGE_EVENT, callback);
+    },
     emitChange: function() {
         this.emit(Constants.CHANGE_EVENT);
     },
