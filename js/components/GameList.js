@@ -29,6 +29,11 @@ var GameList = React.createClass({
         return (
             <div>
                 <h2>GameList</h2>
+                <p>Sort:
+                    <button onClick={ GameActions.sortData('appid') }>ID</button>
+                    <button onClick={ GameActions.sortData('name') }>Name</button>
+                    <button onClick={ GameActions.sortData('playtime_forever') }>Play time</button>
+                </p>
                 <ul>
                     { this.state.games.map(function (game) {
                         return <li key={ game.appid }>{ game.name }</li>

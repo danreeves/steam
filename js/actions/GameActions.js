@@ -5,8 +5,8 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var Constants = require('../Constants/GameConstants');
 
 var GameActions = {
-    getData: function() {
-        pls.get('http://steam.danreev.es/api/games/recent', {
+    getData: function () {
+        pls.get('http://steam.danreev.es/api/games/owned', {
             success: function (d) {
                 var payload = {
                     actionType: Constants.GET_GAME_DATA,
@@ -16,6 +16,15 @@ var GameActions = {
             }
         });
     },
+    sortData: function (key) {
+        return function () {
+            var payload = {
+                actionType: Constants.SORT_GAME_DATA,
+                response: key
+            };
+            AppDispatcher.dispatch(payload);
+        };
+    }
 };
 
 module.exports = GameActions;
