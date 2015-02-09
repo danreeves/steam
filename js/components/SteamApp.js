@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 var React = require('react');
-var GameList = require('./GameList');
+var GamesOwnedList = require('./GamesOwnedList');
 
 var SteamApp = React.createClass({
     displayName: 'SteamApp',
@@ -8,7 +8,7 @@ var SteamApp = React.createClass({
         return (
             <div>
                 <h1>Steam App</h1>
-                <GameList />
+                <GamesOwnedList />
             </div>
         );
     },

@@ -2,7 +2,7 @@
 
 var pls = require('please-ajax')(window);
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var Constants = require('../Constants/GameConstants');
+var Constants = require('../Constants/GamesOwnedConstants');
 
 var GameActions = {
     getData: function () {
