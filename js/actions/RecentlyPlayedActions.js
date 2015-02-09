@@ -2,11 +2,11 @@
 
 var pls = require('please-ajax')(window);
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var Constants = require('../Constants/GamesOwnedConstants');
+var Constants = require('../Constants/RecentlyPlayedConstants');
 
-var GamesOwnedActions = {
+var RecentlyPlayedActions = {
     getData: function () {
-        pls.get('http://steam.danreev.es/api/games/owned', {
+        pls.get('http://steam.danreev.es/api/games/recent', {
             success: function (d) {
                 var payload = {
                     actionType: Constants.GET_DATA,
@@ -27,4 +27,4 @@ var GamesOwnedActions = {
     }
 };
 
-module.exports = GamesOwnedActions;
+module.exports = RecentlyPlayedActions;

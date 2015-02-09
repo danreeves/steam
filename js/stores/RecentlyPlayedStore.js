@@ -2,7 +2,7 @@
 
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
-var Constants = require('../constants/GamesOwnedConstants');
+var Constants = require('../constants/RecentlyPlayedConstants');
 var assign = require('object-assign');
 
 var _games = [];
@@ -30,7 +30,7 @@ function sortData (key) {
     });
 }
 
-var GamesOwnedStore = assign({}, EventEmitter.prototype, {
+var RecentlyPlayedStore = assign({}, EventEmitter.prototype, {
 
     getState: function () {
         return _games;
@@ -57,8 +57,8 @@ AppDispatcher.register(function (action) {
         default:
             // no op
     }
-    GamesOwnedStore.emitChange();
+    RecentlyPlayedStore.emitChange();
     return true;
 });
 
-module.exports = GamesOwnedStore;
+module.exports = RecentlyPlayedStore;
